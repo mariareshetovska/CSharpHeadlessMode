@@ -39,6 +39,7 @@ namespace CSharpHeadlessMode
             request.AddJsonBody(body);
             IRestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
+
         }
     }
 }

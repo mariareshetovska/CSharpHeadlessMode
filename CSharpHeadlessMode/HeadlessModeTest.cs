@@ -19,21 +19,19 @@ namespace CSharpHeadlessMode
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--headless");
             driver = new ChromeDriver(options);
-            driver.Url = "https://www.opencart.com/";
+            driver.Url = "https://www.google.com/";
             driver.Manage().Window.Maximize();
          
         }
-        [Test]
-        public void searchTest()
-        {
-            IWebElement searchElement = driver.FindElement(By.CssSelector("li.dropdown"));
-            searchElement.Click();
-            IWebElement element = driver.FindElement(By.XPath("//a[text()='OpenCart Cloud']"));
-            element.Click();
-            string currentUrl = driver.Url;
-            Assert.AreEqual("https://www.opencart.com/index.php?route=cloud/landing", currentUrl);
-        }
 
+       [Test]
+       public void find()
+        {
+            IWebElement searchElement = driver.FindElement(By.CssSelector(".gLFyf.gsfi"));
+            searchElement.SendKeys("selenium");
+            searchElement.SendKeys(Keys.Enter);
+            Assert.AreEqual("selenium - Пошук Google", driver.Title);
+        }
 
         [TearDown]
         public void close()
